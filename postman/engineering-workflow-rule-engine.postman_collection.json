@@ -1,0 +1,68 @@
+{
+  "info": {
+    "_postman_id": "8a1f425f-95a2-4c4a-bf28-cd51c3dfc35e",
+    "name": "engineering-workflow-rule-engine",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Dashboard",
+      "request": {"method": "GET", "url": "{{baseUrl}}/api/dashboard"}
+    },
+    {
+      "name": "List Employees",
+      "request": {"method": "GET", "url": "{{baseUrl}}/api/employees"}
+    },
+    {
+      "name": "Create Employee",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {"mode":"raw","raw":"{\n  \"fullName\": \"Priya Singh\",\n  \"email\": \"priya.singh@company.com\",\n  \"role\": \"ENGINEER\"\n}"},
+        "url": "{{baseUrl}}/api/employees"
+      }
+    },
+    {
+      "name": "List Tasks",
+      "request": {"method": "GET", "url": "{{baseUrl}}/api/tasks"}
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {"mode":"raw","raw":"{\n  \"title\": \"Optimize Caching\",\n  \"description\": \"Implement cache strategy\",\n  \"priority\": \"HIGH\",\n  \"assignedEmployeeId\": 2,\n  \"approvalsCount\": 1\n}"},
+        "url": "{{baseUrl}}/api/tasks"
+      }
+    },
+    {
+      "name": "Transition Task Status",
+      "request": {
+        "method": "PATCH",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {"mode":"raw","raw":"{\n  \"targetStatus\": \"TEST\",\n  \"blockedReason\": null\n}"},
+        "url": "{{baseUrl}}/api/tasks/1/status"
+      }
+    },
+    {
+      "name": "List Rules",
+      "request": {"method": "GET", "url": "{{baseUrl}}/api/rules"}
+    },
+    {
+      "name": "Create Rule",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {"mode":"raw","raw":"{\n  \"name\": \"Blocked reason required\",\n  \"type\": \"BLOCKED_METADATA\",\n  \"active\": true,\n  \"errorMessage\": \"Blocked tasks require a reason\",\n  \"targetStatus\": \"BLOCKED\",\n  \"executionOrder\": 10\n}"},
+        "url": "{{baseUrl}}/api/rules"
+      }
+    },
+    {
+      "name": "List Violations",
+      "request": {"method": "GET", "url": "{{baseUrl}}/api/violations"}
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:8080"}
+  ]
+}
