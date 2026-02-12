@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <h1>Workflow Engine</h1>
+    <nav>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="tasks.html">Task Management</a>
+      <a href="rules.html">Rule Management</a>
+    </nav>
+  </aside>
+  <main class="content">
+    <h2>Dashboard</h2>
+    <div class="grid cards-3" id="metrics"></div>
+    <section class="card">
+      <h3>Tasks by Status</h3>
+      <div id="statusBreakdown" class="status-grid"></div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+<script>loadDashboard();</script>
+</body>
+</html>

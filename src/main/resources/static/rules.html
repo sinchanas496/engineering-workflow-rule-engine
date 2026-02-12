@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rule Management</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <h1>Workflow Engine</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="tasks.html">Task Management</a>
+      <a href="rules.html" class="active">Rule Management</a>
+    </nav>
+  </aside>
+  <main class="content">
+    <h2>Rule Management (Admin)</h2>
+    <section class="card">
+      <h3>Add Rule</h3>
+      <form id="ruleForm" class="form-grid">
+        <input type="text" id="ruleName" placeholder="Rule name" required />
+        <select id="ruleType" required>
+          <option value="STATUS_PREREQUISITE">STATUS_PREREQUISITE</option>
+          <option value="HIGH_PRIORITY_APPROVALS">HIGH_PRIORITY_APPROVALS</option>
+          <option value="BLOCKED_METADATA">BLOCKED_METADATA</option>
+        </select>
+        <input type="text" id="ruleMessage" placeholder="Error message" required />
+        <input type="text" id="sourceStatus" placeholder="Source status (optional)" />
+        <input type="text" id="targetStatus" placeholder="Target status (optional)" />
+        <input type="text" id="priorityCondition" placeholder="Priority condition (optional)" />
+        <input type="number" id="minApprovals" placeholder="Min approvals" min="0" />
+        <input type="number" id="executionOrder" placeholder="Execution order" min="1" value="1" required />
+        <label class="toggle-wrap"><input type="checkbox" id="active" checked /> Active</label>
+        <button type="submit" class="btn-primary">Create Rule</button>
+      </form>
+      <p id="ruleMessageBox" class="message"></p>
+    </section>
+
+    <section class="card">
+      <h3>Rules</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Type</th><th>Target</th><th>Min Approvals</th><th>Order</th><th>Active</th></tr>
+          </thead>
+          <tbody id="rulesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+<script>initRulesPage();</script>
+</body>
+</html>

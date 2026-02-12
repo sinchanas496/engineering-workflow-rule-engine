@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Management</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <h1>Workflow Engine</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="tasks.html" class="active">Task Management</a>
+      <a href="rules.html">Rule Management</a>
+    </nav>
+  </aside>
+  <main class="content">
+    <h2>Task Management</h2>
+    <section class="card">
+      <h3>Create Task</h3>
+      <form id="taskForm" class="form-grid">
+        <input type="text" id="title" placeholder="Task title" required />
+        <input type="text" id="description" placeholder="Description" required />
+        <select id="priority" required>
+          <option value="LOW">LOW</option>
+          <option value="MEDIUM" selected>MEDIUM</option>
+          <option value="HIGH">HIGH</option>
+        </select>
+        <select id="assignedEmployeeId" required></select>
+        <input type="number" id="approvalsCount" placeholder="Approvals count" min="0" value="0" />
+        <button type="submit" class="btn-primary">Create Task</button>
+      </form>
+      <p id="taskMessage" class="message"></p>
+    </section>
+
+    <section class="card">
+      <h3>Tasks</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+          <tr>
+            <th>ID</th><th>Title</th><th>Priority</th><th>Status</th><th>Assignee</th><th>Approvals</th><th>Transition</th>
+          </tr>
+          </thead>
+          <tbody id="taskTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+<script>initTasksPage();</script>
+</body>
+</html>

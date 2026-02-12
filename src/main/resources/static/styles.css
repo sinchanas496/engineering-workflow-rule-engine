@@ -1,0 +1,87 @@
+:root {
+  --bg: #f3f7fb;
+  --surface: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #dbe7f3;
+  --danger: #dc2626;
+  --success: #16a34a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 250px;
+  background: #0f172a;
+  color: white;
+  padding: 1.5rem 1rem;
+}
+.sidebar h1 { font-size: 1.2rem; margin: 0 0 1.2rem; }
+.sidebar nav { display: grid; gap: .45rem; }
+.sidebar a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: .65rem .7rem;
+  border-radius: .5rem;
+}
+.sidebar a.active, .sidebar a:hover { background: #1e293b; color: #fff; }
+.content { flex: 1; padding: 1.5rem; }
+.card {
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+.grid { display: grid; gap: 1rem; }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.metric .label { color: var(--muted); font-size: .9rem; }
+.metric .value { font-size: 1.8rem; margin-top: .35rem; font-weight: 700; }
+.status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: .7rem; }
+.status-chip {
+  background: #eef4ff;
+  border: 1px solid #bfd5ff;
+  border-radius: 10px;
+  padding: .6rem;
+  text-align: center;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .75rem;
+  align-items: center;
+}
+input, select, button {
+  width: 100%;
+  padding: .62rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  font-size: .95rem;
+}
+button { cursor: pointer; }
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+.btn-primary:hover { background: var(--primary-dark); }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .6rem; border-bottom: 1px solid var(--border); text-align: left; }
+.message { min-height: 1.25rem; margin-top: .8rem; }
+.message.error { color: var(--danger); }
+.message.success { color: var(--success); }
+.hero h2 { margin-top: .1rem; }
+.toggle-wrap { display: flex; align-items: center; gap: .4rem; }
+@media (max-width: 900px) {
+  .app-shell { flex-direction: column; }
+  .sidebar { width: 100%; }
+  .cards-3 { grid-template-columns: 1fr; }
+}
